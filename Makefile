@@ -5,7 +5,7 @@ lint:
 	poetry run flake8 simpletodo
 
 devserver:
-	poetry run python -m simpletodo/manage.py runserver
+	poetry run simpletodo/manage.py runserver
 
 .PHONY:
 	test lint devserver
