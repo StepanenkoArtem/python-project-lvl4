@@ -7,5 +7,7 @@ lint:
 devserver:
 	poetry run simpletodo/manage.py runserver
 
+migrate:
+	poetry run simpletodo/manage.py makemigrations && poetry run simpletodo/manage.py migrate
 .PHONY:
-	test lint devserver
+	test lint devserver migrate
