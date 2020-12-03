@@ -10,29 +10,20 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-import os
 from pathlib import Path
-
-import environ
-
-# Project root folder
-ROOT_DIR = Path(__file__).resolve().parent
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# Load enviroment vars from .env
-
-env = environ.Env()
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SIMPLETODO_SECRET_KEY')
+SECRET_KEY = 'r37gqa6guc!s3b3y(4hdj9j=@l#xp5crie)1am%n+(x(6@atcg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('SIMPLETODO_DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -40,14 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'simpletodo',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +47,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'simpletodo.urls'
@@ -66,7 +54,7 @@ ROOT_URLCONF = 'simpletodo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +74,10 @@ WSGI_APPLICATION = 'simpletodo.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db_url('SIMPLETODO_DB'),
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -127,11 +118,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-ROLLBAR = {
-    'access_token': env('SIMPLETODO_ROLLBAR_TOKEN'),
-    'environment': 'development' if DEBUG else 'production',
-    'branch': 'master',
-    'root': ROOT_DIR,
-}

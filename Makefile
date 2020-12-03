@@ -1,13 +1,13 @@
 test:
-	poetry run pytest simpletodo/tests -vv
+	poetry run pytest */tests -vv
 
 lint:
 	poetry run flake8 simpletodo
 
 devserver:
-	poetry run simpletodo/manage.py runserver
+	poetry run manage.py runserver
 
 migrate:
-	poetry run simpletodo/manage.py makemigrations && poetry run simpletodo/manage.py migrate
+	poetry run manage.py makemigrations && poetry run simpletodo/manage.py migrate
 .PHONY:
 	test lint devserver migrate
