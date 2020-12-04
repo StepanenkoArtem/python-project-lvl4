@@ -5,9 +5,9 @@ lint:
 	poetry run flake8 simpletodo
 
 devserver:
-	poetry run manage.py runserver
+	poetry run ./manage.py runserver
 
 migrate:
-	poetry run manage.py makemigrations && poetry run simpletodo/manage.py migrate
+	poetry run ./manage.py makemigrations && poetry run ./manage.py migrate
 .PHONY:
 	test lint devserver migrate
