@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'simpletodo.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db_url('SIMPLETODO_URL'),
+    'default': env.db_url('DATABASE_URL'),
 }
 
 
