@@ -27,7 +27,7 @@ env = environ.Env()
 SECRET_KEY = env('SIMPLETODO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('SIMPLETODO_DEBUG', False)
+DEBUG = env('SIMPLETODO_DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'simpletodo.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': env.db('SIMPLETODO_DB'),
+    'default': env.db_url('SIMPLETODO_DB'),
 }
 
 
