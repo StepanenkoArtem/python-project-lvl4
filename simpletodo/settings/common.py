@@ -20,9 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD:simpletodo/settings/common.py
 
 SECRET_KEY = os.getenv('SIMPLETODO_SECRET_KEY')
 
+=======
+SECRET_KEY = os.getenv('SIMPLETODO_SECRET_KEY')
+>>>>>>> develop:simpletodo/settings/common.py
 
 # Application definition
 
@@ -68,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'simpletodo.wsgi.application'
 
+<<<<<<< HEAD:simpletodo/settings/common.py
 <<<<<<< HEAD:simpletodo/settings.py
 
 # Database
@@ -78,6 +83,8 @@ DATABASES = {
 }
 
 
+=======
+>>>>>>> develop:simpletodo/settings/common.py
 =======
 >>>>>>> develop:simpletodo/settings/common.py
 # Password validation

@@ -668,7 +668,11 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 lock-version = "1.1"
 python-versions = "^3.7"
 <<<<<<< HEAD
+<<<<<<< HEAD
 content-hash = "c111719708f14f93924d55b4fa81c4600e867ba12693a6e093ded904a853564b"
+=======
+content-hash = "a70e33f40d862aeafe6bc8ef9f23f90ba5f36ecca2d29cf3d089639d01e2cb0b"
+>>>>>>> develop
 =======
 content-hash = "a70e33f40d862aeafe6bc8ef9f23f90ba5f36ecca2d29cf3d089639d01e2cb0b"
 >>>>>>> develop
