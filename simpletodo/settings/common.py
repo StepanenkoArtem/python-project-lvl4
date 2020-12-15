@@ -10,26 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
 from pathlib import Path
-
-import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Reading enviroment variables
-env = environ.Env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SIMPLETODO_SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool('SIMPLETODO_DEBUG', default=False)
-
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+SECRET_KEY = os.getenv('SIMPLETODO_SECRET_KEY')
 
 
 # Application definition
@@ -76,6 +68,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'simpletodo.wsgi.application'
 
+<<<<<<< HEAD:simpletodo/settings.py
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -85,6 +78,8 @@ DATABASES = {
 }
 
 
+=======
+>>>>>>> develop:simpletodo/settings/common.py
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -109,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = env('TIME_ZONE')
+TIME_ZONE = os.getenv('SIMPLETODO_TIME_ZONE')
 
 USE_I18N = True
 
@@ -203,10 +198,4 @@ BOOTSTRAP4 = {
         'default': 'bootstrap4.renderers.FieldRenderer',
         'inline': 'bootstrap4.renderers.InlineFieldRenderer',
     },
-}
-ROLLBAR = {
-    'access_token': env('SIMPLETODO_ROLLBAR_TOKEN'),
-    'environment': 'development' if DEBUG else 'production',
-    'branch': 'master',
-    'root': '/absolute/path/to/code/root',
 }
