@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
 
 SECRET_KEY = os.getenv('SIMPLETODO_SECRET_KEY')
 # Application definition
