@@ -1,6 +1,10 @@
 import os
 
-from simpletodo.settings.common import *
+from split_settings.tools import include
+
+include(
+    'common.py',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -16,12 +20,4 @@ DATABASES = {
         'HOST': os.getenv('SIMPLETODO_DB_HOST'),
         'PORT': os.getenv('SIMPLETODO_DB_PORT'),
     },
-}
-
-# Rollbar auth setting
-ROLLBAR = {
-    'access_token': os.getenv('SIMPLETODO_ROLLBAR_TOKEN'),
-    'environment': 'production',
-    'branch': 'master',
-    'root': '/absolute/path/to/code/root',
 }

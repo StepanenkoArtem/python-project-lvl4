@@ -11,19 +11,27 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+from os import environ
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+# Import environment variable from .env file
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split()
+ENV = environ.get('SIMPLETODO_ENVIRON') or 'development'
 
-SECRET_KEY = os.getenv('SIMPLETODO_SECRET_KEY')
+ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', 'localhost').split()
+
+SECRET_KEY = environ.get('SIMPLETODO_SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
@@ -92,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = os.getenv('SIMPLETODO_TIME_ZONE')
+TIME_ZONE = environ.get('SIMPLETODO_TIME_ZONE', 'GMT')
 
 USE_I18N = True
 
@@ -186,4 +194,12 @@ BOOTSTRAP4 = {
         'default': 'bootstrap4.renderers.FieldRenderer',
         'inline': 'bootstrap4.renderers.InlineFieldRenderer',
     },
+}
+
+# Rollbar auth setting
+ROLLBAR = {
+    'access_token': os.getenv('SIMPLETODO_ROLLBAR_TOKEN'),
+    'environment': ENV,
+    'branch': 'main',
+    'root': os.path.abspath(BASE_DIR),
 }
