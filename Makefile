@@ -9,5 +9,9 @@ devserver:
 
 migrate:
 	poetry run ./manage.py makemigrations && poetry run ./manage.py migrate
+
+requirements.txt:
+	poetry export -o requirements.txt
+
 .PHONY:
 	test lint devserver migrate
