@@ -203,3 +203,27 @@ ROLLBAR = {
     'branch': 'main',
     'root': os.path.abspath(BASE_DIR),
 }
+
+# DataFlair #Logging Information
+LOGGING = {
+    'version': 1,
+    # Version of logging
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+        'rollbar': {
+            'level': 'WARNING',
+            'class': 'rollbar.logger.RollbarHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'rollbar'],
+            'propagate': True,
+            'level': os.getenv('SIMPLETODO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
