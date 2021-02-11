@@ -1,6 +1,14 @@
 from django.shortcuts import render
+from django.utils.translation import gettext as _
 
 
-# Create your views here.
 def index(request):
-    return render(request, template_name='index.html')
+    """Generate simple main page."""
+    output = {
+        'test_text': _('This is a test page'),
+    }
+    return render(
+        request,
+        template_name='index.html',
+        context=output,
+    )
