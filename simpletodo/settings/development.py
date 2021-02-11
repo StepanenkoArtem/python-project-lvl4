@@ -1,10 +1,6 @@
 import os
 
-from split_settings.tools import include
-
-include(
-    'common.py',
-)
+from simpletodo.settings.common import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -17,4 +13,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.getenv('SIMPLETODO_DB_NAME'),
     },
+}
+
+ROLLBAR = {
+    'access_token': os.getenv('SIMPLETODO_ROLLBAR_TOKEN'),
+    'environment': 'development',
+    'branch': 'master',
+    'root': '/absolute/path/to/code/root',
 }

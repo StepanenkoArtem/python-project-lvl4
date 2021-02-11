@@ -1,5 +1,5 @@
 test:
-	poetry run pytest */tests -vv
+	poetry run python -m pytest tests -vv
 
 lint:
 	poetry run flake8 simpletodo

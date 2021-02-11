@@ -35,7 +35,6 @@ SECRET_KEY = environ.get('SIMPLETODO_SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
-    'todo',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
@@ -61,7 +61,7 @@ ROOT_URLCONF = 'simpletodo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,7 +114,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
+THEMES_DIR = 'themes'
 
+STATICFILES_DIRS = [
+    (THEMES_DIR, os.path.join(BASE_DIR, 'themes')),
+]
 # Default settings
 BOOTSTRAP4 = {
     # The complete URL to the Bootstrap CSS file
@@ -135,7 +139,7 @@ BOOTSTRAP4 = {
     },
 
     # The complete URL to the Bootstrap CSS file (None means no theme)
-    'theme_url': None,
+    'theme_url': os.path.join(STATIC_URL, THEMES_DIR, 'darkly/bootstrap.min.css'),
 
     # The URL to the jQuery JavaScript file (full)
     'jquery_url': {
