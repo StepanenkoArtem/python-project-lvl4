@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # noqa: WPS221
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # noqa: WPS221
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -115,7 +115,7 @@ STATIC_ROOT = 'static/'
 THEMES_DIR = 'themes'
 
 STATICFILES_DIRS = [
-    (THEMES_DIR, 'themes'),
+    os.path.join(BASE_DIR, THEMES_DIR),
 ]
 # Default settings
 BOOTSTRAP4 = {
@@ -137,7 +137,7 @@ BOOTSTRAP4 = {
     },
 
     # The complete URL to the Bootstrap CSS file (None means no theme)
-    'theme_url': os.path.join(STATIC_URL, THEMES_DIR, 'darkly/bootstrap.min.css'),
+    'theme_url': os.path.join(STATIC_URL, 'darkly/bootstrap.min.css'),
 
     # The URL to the jQuery JavaScript file (full)
     'jquery_url': {
