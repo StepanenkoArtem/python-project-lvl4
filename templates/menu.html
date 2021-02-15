@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="row bg-dark">
     <nav class="col navbar navbar-expand navbar-dark ">
         <ul class="navbar-nav text-light">
@@ -5,16 +6,16 @@
                 <a class="nav-link text-white" href="#">+ Task</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Overview</span></a>
+                <a class="nav-link" href="#">{% translate "Overview" %}</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tasks</span></a>
+                <a class="nav-link" href="#">{% translate "Tasks" %}</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Users</a>
+                <a class="nav-link" href="#">{% translate "User" %}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Tags</a>
+                <a class="nav-link" href="#">{% translate "Tags" %}</a>
             </li>
         </ul>
     </nav>
