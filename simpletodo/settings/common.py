@@ -215,7 +215,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'console': {
-            'level': 'DEBUG',
+            'level': 'WARNING',
             'class': 'logging.StreamHandler',
         },
         'rollbar': {
@@ -227,7 +227,7 @@ LOGGING = {
         'django': {
             'handlers': ['console', 'rollbar'],
             'propagate': True,
-            'level': os.getenv('SIMPLETODO_LOG_LEVEL', 'DEBUG'),
+            'level': os.getenv('SIMPLETODO_LOG_LEVEL', 'WARNING'),
         },
     },
 }
