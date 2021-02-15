@@ -99,6 +99,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
+LANGUAGES = [
+    ('en', 'English'),
+    ('ua', 'Ukrainian'),
+    ('ru', 'Russian'),
+]
+
 TIME_ZONE = os.environ.get('SIMPLETODO_TIME_ZONE', 'GMT')
 
 USE_I18N = True
@@ -121,7 +127,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, THEMES_DIR),
 ]
 
-# Default settings
+# Bootstrap settings
 BOOTSTRAP4 = {
     # The complete URL to the Bootstrap CSS file
     # Note that a URL can be either a string,
@@ -201,6 +207,7 @@ BOOTSTRAP4 = {
         'inline': 'bootstrap4.renderers.InlineFieldRenderer',
     },
 }
+
 
 # Rollbar auth setting
 ROLLBAR = {
