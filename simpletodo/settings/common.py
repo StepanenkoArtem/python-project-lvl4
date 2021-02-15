@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-from os import environ
 
 from dotenv import load_dotenv
 
@@ -26,11 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # noqa: 
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-ENV = environ.get('SIMPLETODO_ENVIRON') or 'development'
+ENV = os.environ.get('SIMPLETODO_ENVIRON') or 'development'
 
-ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS', 'localhost').split()
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split()
 
-SECRET_KEY = environ.get('SIMPLETODO_SECRET_KEY')
+SECRET_KEY = os.environ.get('SIMPLETODO_SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,7 +59,7 @@ ROOT_URLCONF = 'simpletodo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = environ.get('SIMPLETODO_TIME_ZONE', 'GMT')
+TIME_ZONE = os.environ.get('SIMPLETODO_TIME_ZONE', 'GMT')
 
 USE_I18N = True
 
@@ -116,7 +115,7 @@ STATIC_ROOT = 'static/'
 THEMES_DIR = 'themes'
 
 STATICFILES_DIRS = [
-    (THEMES_DIR, os.path.join(BASE_DIR, 'themes')),
+    (THEMES_DIR, 'themes'),
 ]
 # Default settings
 BOOTSTRAP4 = {

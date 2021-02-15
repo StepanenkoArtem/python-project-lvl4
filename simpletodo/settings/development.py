@@ -1,6 +1,6 @@
 import os
 
-from simpletodo.settings import common
+from simpletodo.settings.common import *
 
 DEBUG = True
 
@@ -15,5 +15,5 @@ ROLLBAR = {
     'access_token': os.getenv('SIMPLETODO_ROLLBAR_TOKEN'),
     'environment': 'development',
     'branch': 'master',
-    'root': common.BASE_DIR,
+    'root': BASE_DIR,
 }
