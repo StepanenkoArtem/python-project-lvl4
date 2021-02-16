@@ -33,7 +33,7 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: templates/menu.html:15
-msgid "User"
+msgid "Users"
 msgstr "Пользователи"
 
 #: templates/menu.html:18
